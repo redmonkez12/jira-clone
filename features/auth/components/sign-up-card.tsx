@@ -5,8 +5,27 @@ import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
 import { FaDiscord } from "react-icons/fa";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import {z} from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema } from "../schemas";
+import { useRegister } from "../api/use-register";
 
 export function SignUpCard() {
+    const { mutate } = useRegister();
+
+    const form = useForm<z.infer<typeof registerSchema>>({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+        resolver: zodResolver(registerSchema),
+     });
+
+    function onSubmit(values: z.infer<typeof registerSchema>) {
+        mutate({ json: values });
+     }
+
     return (
         <Card className="w-full h-full md:w-[487px] border-none shadow-none">
             <CardHeader className="flex items-center justify-center text-center p-7">

@@ -9,25 +9,22 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormField, FormItem, FormControl, FormMessage} from "@/components/ui/form";
 import Link from "next/link";
-
-const formSchema = z.object({
-    name: z.string().trim().min(1, "Jméno je povinné"),
-    email: z.string().email("Chybný email"),
-    password: z.string().min(8, "Minimálně 8 znaků"),
-});
+import { loginSchema } from "../schemas";
+import { useLogin } from "../api/use-login";
 
 export function SignInCard() {
-    const form = useForm<z.infer<typeof formSchema>>({
+    const { mutate } = useLogin();
+
+    const form = useForm<z.infer<typeof loginSchema>>({
        defaultValues: {
-           name: "",
            email: "",
            password: "",
        },
-       resolver: zodResolver(formSchema),
+       resolver: zodResolver(loginSchema),
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-       console.log(values);
+    function onSubmit(values: z.infer<typeof loginSchema>) {
+       mutate({ json: values });
     }
 
     return (

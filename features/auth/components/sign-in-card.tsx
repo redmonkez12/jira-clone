@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DottedSeperator } from "@/components/dotted-seperator";
+import { DottedSeparator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
@@ -35,7 +35,7 @@ export function SignInCard() {
                 </CardTitle>
             </CardHeader>
             <div className="px-7 mb-2">
-                <DottedSeperator/>
+                <DottedSeparator/>
             </div>
             <CardContent className="p-7">
                 <Form {...form}>
@@ -84,7 +84,7 @@ export function SignInCard() {
             </CardContent>
 
             <div className="px-7">
-                <DottedSeperator/>
+                <DottedSeparator/>
             </div>
 
             <CardContent className="p-7 flex flex-col gap-y-4">
@@ -96,7 +96,7 @@ export function SignInCard() {
                 </Button>
             </CardContent>
             <div className="px-7">
-                <DottedSeperator/>
+                <DottedSeparator/>
             </div>
             <CardContent className="p-7 flex items-center justify-center">
                 <p>

@@ -10,7 +10,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { DottedSeperator } from "@/components/dotted-seperator";
+import { DottedSeparator } from "@/components/dotted-seperator";
 import { useLogout } from "@/features/auth/api/use-logout";
 
 export function UserButton() {
@@ -56,7 +56,7 @@ export function UserButton() {
                         <p className="text-xs text-neutral-500">{email}</p>
                     </div>
                 </div>
-                <DottedSeperator className="mb-1"/>
+                <DottedSeparator className="mb-1"/>
                 <DropdownMenuItem 
                     onClick={() => logout()}
                     className="h-10 flex items-center justify-center text-amber-700 font-medium cursor-pointer">

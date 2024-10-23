@@ -23,6 +23,7 @@ export default function RootLayout({
         className={cn(inter.className, "antialiased min-h-screen")}
       >
         <QueryProvider>
+          <Toaster/>
           {children}
         </QueryProvider>
       </body>

@@ -12,9 +12,25 @@ const app = new Hono()
         sessionMiddleware,
         async (c) => {
             const databases = c.get("databases");
+            const storage = c.get("storage");
             const user = c.get("user");
             
-            const { name } = c.req.valid("json");
+            const { name, image } = c.req.valid("json");
+
+            let uploadedImageUrl: string | undefined;
+
+            if (image instanceof Image) {
+                const file = await storage.createFile(
+                    IMAGE_BUCKET_ID,
+                    ID.unique(),    
+                    image,
+                );
+                
+                const arrayBuffer = await storage.getFilePreview(
+                    IMAGE_BUCKET_IT,
+                    file.$id,
+                );
+            }
             
             const workspace = await databases.createDocument(
                 DATABASE_ID,
